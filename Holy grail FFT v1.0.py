@@ -6,7 +6,7 @@ from scipy import signal
 # CSV inladen
 df = pd.read_csv("C:/Users/Dell/Downloads/sinus.csv")
 df.columns = ['t', 'x', 'y', 'z']  # Pas dit aan naar de juiste kolomnamen
-t = df['t']  # Converteer tijd naar seconden
+t = df['t'] /1000 # Converteer tijd naar seconden
 x = df['x']
 y = df['y']
 z = df['z']
@@ -78,7 +78,7 @@ psd_combined = (psd_x + psd_y + psd_z) / 3
 #axs[1, 0].semilogy(frequencies_psd, psd_x, label='PSD x', color='red', alpha=0.6)
 #axs[1, 0].semilogy(frequencies_psd, psd_y, label='PSD y', color='green', alpha=0.6)
 #axs[1, 0].semilogy(frequencies_psd, psd_z, label='PSD z', color='blue', alpha=0.6)
-axs[1, 0].semilogy(frequencies_psd, psd_combined, label='Gecombineerde PSD', color='orange', linewidth=2)
+axs[1, 0].semilogy(frequencies_psd, psd_combined, label='Gecombineerde PSD', color='green', linewidth=2)
 axs[1, 0].set_title('Power Spectral Density (PSD) van Versnelling')
 axs[1, 0].set_xlabel('Frequentie [Hz]')
 axs[1, 0].set_ylabel('PSD [m^2/s^4/Hz]')
