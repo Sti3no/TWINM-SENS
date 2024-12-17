@@ -4,9 +4,9 @@ import pandas as pd
 from scipy import signal
 
 # CSV inladen
-df = pd.read_csv("C:/Users/Dell/Downloads/sinus.csv")
+df = pd.read_csv("C:/Users/Dell/Downloads/kedeng-kedenggg.csv")
 df.columns = ['t', 'x', 'y', 'z']  # Pas dit aan naar de juiste kolomnamen
-t = df['t'] /1000 # Converteer tijd naar seconden
+t = df['t'] / 1000 # Converteer tijd naar seconden
 x = df['x']
 y = df['y']
 z = df['z']
@@ -15,6 +15,10 @@ z = df['z']
 x = x - np.mean(x)
 y = y - np.mean(y)
 z = z - np.mean(z)
+
+x = np.nan_to_num(x)  # Vervang NaN of Inf met 0
+y = np.nan_to_num(y)
+z = np.nan_to_num(z)
 
 # Bereken het tijdsverschil tussen opeenvolgende tijdstappen
 dt = np.diff(t)  # Dit geeft het verschil tussen opeenvolgende tijdstappen
@@ -93,7 +97,7 @@ Z = Sxx_combined
 
 ax.plot_surface(X, Y, Z, cmap='inferno', edgecolor='none')
 
-ax.set_title('Waterfall Plot van Versnelling', fontsize=16)
+ax.set_title('Waterfall Plot van Frequentie', fontsize=16)
 ax.set_xlabel('Tijd [s]', fontsize=14)
 ax.set_ylabel('Frequentie [Hz]', fontsize=14)
 ax.set_zlabel('Amplitude', fontsize=14)
